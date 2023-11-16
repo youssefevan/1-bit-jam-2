@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce1rbpfud4282"]
+[gd_scene load_steps=9 format=3 uid="uid://ce1rbpfud4282"]
 
 [ext_resource type="Texture2D" uid="uid://b2l6iif0sjdf1" path="res://sprites/littleman1.png" id="1_2u3s4"]
 [ext_resource type="Texture2D" uid="uid://cssx0a2ejrvg0" path="res://sprites/world.png" id="1_7uiod"]
@@ -10,14 +10,11 @@
 radius = 4.0
 height = 16.0
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yb3eq"]
-bounce = 1.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejjn2"]
 radius = 14.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1f5ss"]
-radius = 25.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncvdl"]
+size = Vector2(64, 12)
 
 [node name="World" type="Node2D"]
 
@@ -49,11 +46,8 @@ metadata/_edit_group_ = true
 [node name="Collider" type="CollisionPolygon2D" parent="Walls2"]
 polygon = PackedVector2Array(0, 0, 0, 512, 64, 512, 64, 478, 31.9988, 478, 17.9988, 464, 17.9999, 48.0001, 31.9999, 34.0001, 64, 34.0002, 64, 0)
 
-[node name="Puck" type="RigidBody2D" parent="."]
+[node name="Puck" type="Area2D" parent="."]
 position = Vector2(144, 256)
-physics_material_override = SubResource("PhysicsMaterial_yb3eq")
-gravity_scale = 0.0
-lock_rotation = true
 linear_damp = 0.5
 metadata/_edit_group_ = true
 
@@ -63,11 +57,8 @@ texture = ExtResource("3_yq80h")
 [node name="Collider" type="CollisionShape2D" parent="Puck"]
 shape = SubResource("CircleShape2D_ejjn2")
 
-[node name="Paddle" type="RigidBody2D" parent="."]
+[node name="Paddle" type="Area2D" parent="."]
 position = Vector2(144, 464)
-mass = 3.0
-gravity_scale = 0.0
-lock_rotation = true
 linear_damp = 20.0
 script = ExtResource("4_47ori")
 metadata/_edit_group_ = true
@@ -76,4 +67,4 @@ metadata/_edit_group_ = true
 texture = ExtResource("4_m0skj")
 
 [node name="Collider" type="CollisionShape2D" parent="Paddle"]
-shape = SubResource("CircleShape2D_1f5ss")
+shape = SubResource("RectangleShape2D_ncvdl")
