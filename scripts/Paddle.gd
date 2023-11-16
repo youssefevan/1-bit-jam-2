@@ -1,4 +1,7 @@
-extends Area2D
+extends CharacterBody2D
+
+var fric = 8
 
 func _physics_process(delta):
-	global_position.x = clamp(get_global_mouse_position().x, 64, 224)
+	var target_position = lerp(global_position.x, get_global_mouse_position().x, fric * delta)
+	global_position.x = clamp(target_position, 64, 224)
