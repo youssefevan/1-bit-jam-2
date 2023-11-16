@@ -1,21 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce1rbpfud4282"]
+[gd_scene load_steps=11 format=3 uid="uid://ce1rbpfud4282"]
 
 [ext_resource type="Texture2D" uid="uid://b2l6iif0sjdf1" path="res://sprites/littleman1.png" id="1_2u3s4"]
 [ext_resource type="Texture2D" uid="uid://cssx0a2ejrvg0" path="res://sprites/world.png" id="1_7uiod"]
+[ext_resource type="Script" path="res://scripts/Subject.gd" id="2_ic5yg"]
 [ext_resource type="Script" path="res://scripts/Puck.gd" id="3_qgjgo"]
 [ext_resource type="Texture2D" uid="uid://igeaeoc8kyhv" path="res://sprites/puck.png" id="3_yq80h"]
 [ext_resource type="Script" path="res://scripts/Paddle.gd" id="4_47ori"]
 [ext_resource type="Texture2D" uid="uid://byaibpqj76kwh" path="res://sprites/paddle.png" id="4_m0skj"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1p3m"]
-radius = 4.0
-height = 16.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_ejjn2"]
-radius = 14.0
+radius = 7.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncvdl"]
 size = Vector2(64, 12)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1p3m"]
+radius = 4.0
+height = 16.0
 
 [node name="World" type="Node2D"]
 
@@ -23,21 +24,11 @@ size = Vector2(64, 12)
 position = Vector2(144, 256)
 texture = ExtResource("1_7uiod")
 
-[node name="Subject" type="Area2D" parent="."]
-position = Vector2(60, 90)
-metadata/_edit_group_ = true
-
-[node name="Sprite" type="Sprite2D" parent="Subject"]
-texture = ExtResource("1_2u3s4")
-
-[node name="Collider" type="CollisionShape2D" parent="Subject"]
-shape = SubResource("CapsuleShape2D_x1p3m")
-
 [node name="Walls" type="StaticBody2D" parent="."]
 metadata/_edit_group_ = true
 
 [node name="Collider" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(0, 0, 0, 512, 64, 512, 64, 478, 32, 478, 18, 464, 18, 48, 32, 34, 64, 34, 64, 0)
+polygon = PackedVector2Array(0, 0, 0, 528, 64, 528, 224, 528, 224, 512, 64, 512, 64, 479, 18, 433, 18, 79, 64, 33, 64, 0)
 
 [node name="Walls2" type="StaticBody2D" parent="."]
 position = Vector2(288, 512)
@@ -45,7 +36,7 @@ rotation = 3.14159
 metadata/_edit_group_ = true
 
 [node name="Collider" type="CollisionPolygon2D" parent="Walls2"]
-polygon = PackedVector2Array(0, 0, 0, 512, 64, 512, 64, 478, 31.9988, 478, 17.9988, 464, 17.9999, 48.0001, 31.9999, 34.0001, 64, 34.0002, 64, 0)
+polygon = PackedVector2Array(0, 0, 0, 528, 64, 528, 224, 528, 224, 512, 64, 512, 64, 479, 18, 433, 18, 79, 64, 33, 64, 0)
 
 [node name="Puck" type="CharacterBody2D" parent="."]
 position = Vector2(144, 256)
@@ -68,3 +59,102 @@ texture = ExtResource("4_m0skj")
 
 [node name="Collider" type="CollisionShape2D" parent="Paddle"]
 shape = SubResource("RectangleShape2D_ncvdl")
+
+[node name="Subjects" type="Node2D" parent="."]
+
+[node name="Subject" type="Area2D" parent="Subjects"]
+position = Vector2(60, 90)
+script = ExtResource("2_ic5yg")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Subjects/Subject"]
+texture = ExtResource("1_2u3s4")
+
+[node name="Collider" type="CollisionShape2D" parent="Subjects/Subject"]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[node name="Subject2" type="Area2D" parent="Subjects"]
+position = Vector2(174, 141)
+script = ExtResource("2_ic5yg")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Subjects/Subject2"]
+texture = ExtResource("1_2u3s4")
+
+[node name="Collider" type="CollisionShape2D" parent="Subjects/Subject2"]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[node name="Subject3" type="Area2D" parent="Subjects"]
+position = Vector2(96, 213)
+script = ExtResource("2_ic5yg")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Subjects/Subject3"]
+texture = ExtResource("1_2u3s4")
+
+[node name="Collider" type="CollisionShape2D" parent="Subjects/Subject3"]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[node name="Subject4" type="Area2D" parent="Subjects"]
+position = Vector2(210, 209)
+script = ExtResource("2_ic5yg")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Subjects/Subject4"]
+texture = ExtResource("1_2u3s4")
+
+[node name="Collider" type="CollisionShape2D" parent="Subjects/Subject4"]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[node name="Subject5" type="Area2D" parent="Subjects"]
+position = Vector2(226, 320)
+script = ExtResource("2_ic5yg")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Subjects/Subject5"]
+texture = ExtResource("1_2u3s4")
+
+[node name="Collider" type="CollisionShape2D" parent="Subjects/Subject5"]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[node name="Subject6" type="Area2D" parent="Subjects"]
+position = Vector2(86, 383)
+script = ExtResource("2_ic5yg")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Subjects/Subject6"]
+texture = ExtResource("1_2u3s4")
+
+[node name="Collider" type="CollisionShape2D" parent="Subjects/Subject6"]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[node name="Subject7" type="Area2D" parent="Subjects"]
+position = Vector2(55, 313)
+script = ExtResource("2_ic5yg")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Subjects/Subject7"]
+texture = ExtResource("1_2u3s4")
+
+[node name="Collider" type="CollisionShape2D" parent="Subjects/Subject7"]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[node name="Subject8" type="Area2D" parent="Subjects"]
+position = Vector2(125, 324)
+script = ExtResource("2_ic5yg")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Subjects/Subject8"]
+texture = ExtResource("1_2u3s4")
+
+[node name="Collider" type="CollisionShape2D" parent="Subjects/Subject8"]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[connection signal="body_entered" from="Subjects/Subject" to="Subjects/Subject" method="_on_body_entered"]
+[connection signal="body_entered" from="Subjects/Subject2" to="Subjects/Subject2" method="_on_body_entered"]
+[connection signal="body_entered" from="Subjects/Subject3" to="Subjects/Subject3" method="_on_body_entered"]
+[connection signal="body_entered" from="Subjects/Subject4" to="Subjects/Subject4" method="_on_body_entered"]
+[connection signal="body_entered" from="Subjects/Subject5" to="Subjects/Subject5" method="_on_body_entered"]
+[connection signal="body_entered" from="Subjects/Subject6" to="Subjects/Subject6" method="_on_body_entered"]
+[connection signal="body_entered" from="Subjects/Subject7" to="Subjects/Subject7" method="_on_body_entered"]
+[connection signal="body_entered" from="Subjects/Subject8" to="Subjects/Subject8" method="_on_body_entered"]
