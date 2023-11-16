@@ -1,12 +1,14 @@
 extends CharacterBody2D
-class_name Paddle
+class_name CPU
 
-var fric = 8
+@export var puck : Puck
+
+var fric = 3
 var can_move = true
 
 func _physics_process(delta):
-	if can_move:
-		var target_position = lerp(global_position.x, get_global_mouse_position().x, fric * delta)
+	if abs(global_position.y - puck.global_position.y) < 150 and can_move:
+		var target_position = lerp(global_position.x, puck.global_position.x, fric * delta)
 		global_position.x = clamp(target_position, 64, 224)
 
 func pause():
