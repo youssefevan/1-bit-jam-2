@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://nm2jdmgbr0ug"]
+
+[ext_resource type="Script" path="res://scripts/Subject.gd" id="1_4njq8"]
+[ext_resource type="Texture2D" uid="uid://b2l6iif0sjdf1" path="res://sprites/littleman1.png" id="2_67g07"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x1p3m"]
+radius = 4.0
+height = 16.0
+
+[node name="Subject" type="Area2D"]
+script = ExtResource("1_4njq8")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_67g07")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x1p3m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

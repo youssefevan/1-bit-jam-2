@@ -47,10 +47,9 @@ texture = ExtResource("3_yq80h")
 [node name="Collider" type="CollisionShape2D" parent="Puck"]
 shape = SubResource("CircleShape2D_ejjn2")
 
-[node name="Paddle" type="CharacterBody2D" parent="." node_paths=PackedStringArray("puck")]
+[node name="Paddle" type="CharacterBody2D" parent="."]
 position = Vector2(144, 432)
 script = ExtResource("4_47ori")
-puck = NodePath("../Puck")
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Paddle"]
